@@ -8,7 +8,9 @@ type Props = {
 
 const BlogPage: React.FC<Props> = ({ data }) => (
   <Body title={data.id}>
-    <div dangerouslySetInnerHTML={{ __html: data.content }} />
+    <article>
+      <div dangerouslySetInnerHTML={{ __html: data.content }} />
+    </article>
   </Body>
 );
 

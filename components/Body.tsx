@@ -6,13 +6,15 @@ import { AUTHOR, SITE_NAME } from "../libs/const";
 type Props = {
   children?: ReactNode;
   title?: string;
+  show_title?: boolean;
 };
 
-const Body: React.FC<Props> = ({ children, title }) => {
+const Body: React.FC<Props> = ({ children, title, show_title = true }) => {
   const date = new Date();
   const year = date.getFullYear();
   const title_in_head = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
-  const PageTitle: React.FC = () => (title ? <h1>{title}</h1> : null);
+  const PageTitle: React.FC = () =>
+    title && show_title ? <h2>{title}</h2> : null;
   return (
     <>
       <Head>

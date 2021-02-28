@@ -8,12 +8,12 @@ type Props = {
 };
 
 const IndexPage: React.FC<Props> = ({ summaries }) => (
-  <Body title="Blog">
+  <Body title="Blog" show_title={false}>
     <ul>
-      {summaries.map(({ id }) => (
-        <li key={id}>
-          <Link href={`/blog/${id}`}>
-            <a>{id}</a>
+      {summaries.map((data) => (
+        <li key={data.id}>
+          <Link href={`/b/${data.id}`}>
+            <a>{data.id}</a>
           </Link>
         </li>
       ))}

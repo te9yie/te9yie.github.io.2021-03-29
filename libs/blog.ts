@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
-import remark from "remark";
-import html from "remark-html";
+import { processor } from "./md_processor";
 
 const BLOG_DIR = path.join(process.cwd(), "blog");
 
@@ -42,7 +41,7 @@ export const getBlogSummaries = () => {
 export const getBlogData = async (id: string) => {
   const fullPath = path.join(BLOG_DIR, `${id}.md`);
   const fileContent = fs.readFileSync(fullPath, "utf8");
-  const procContent = await remark().use(html).process(fileContent);
+  const procContent = await processor.process(fileContent);
   const content = procContent.toString();
   return {
     id,

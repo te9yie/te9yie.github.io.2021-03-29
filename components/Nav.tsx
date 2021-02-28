@@ -8,17 +8,19 @@ const Nav: React.FC = () => {
       <ul>
         <li>
           <Link href="/">
-            <a id="site-name">{SITE_NAME}</a>
+            <a id="site-name">
+              <h1>{SITE_NAME}</h1>
+            </a>
           </Link>
         </li>
         <li>
-          <Link href="/blog">
+          <Link href="/b">
             <a>Blog</a>
           </Link>
         </li>
         <li>
-          <Link href="/about">
-            <a>About</a>
+          <Link href="/w">
+            <a>Wiki</a>
           </Link>
         </li>
       </ul>
