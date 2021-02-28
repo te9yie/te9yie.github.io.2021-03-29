@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Body from "../../components/Body";
+import Markdown from "../../components/Markdown";
 import { BlogData, getAllBlogIds, getBlogData } from "../../libs/blog";
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 const BlogPage: React.FC<Props> = ({ data }) => (
   <Body title={data.id}>
     <article>
-      <div dangerouslySetInnerHTML={{ __html: data.content }} />
+      <Markdown content={data.content} />
     </article>
   </Body>
 );

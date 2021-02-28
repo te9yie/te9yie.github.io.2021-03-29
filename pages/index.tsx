@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import Body from "../components/Body";
+import Markdown from "../components/Markdown";
 import { BlogData, getBlogData, getBlogSummaries } from "../libs/blog";
 import styles from "./index.module.css";
 
@@ -17,7 +18,7 @@ const IndexPage: React.FC<Props> = ({ data }) => (
             <a className={styles.permalink}>{data.id}</a>
           </Link>
         </h2>
-        <div dangerouslySetInnerHTML={{ __html: data.content }} />
+        <Markdown content={data.content} />
       </article>
     ))}
   </Body>

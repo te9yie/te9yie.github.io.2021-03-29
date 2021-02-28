@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Body from "../../components/Body";
+import Markdown from "../../components/Markdown";
 import { WikiData, getAllWikiIds, getWikiData } from "../../libs/wiki";
 
 type Props = {
@@ -8,7 +9,9 @@ type Props = {
 
 const WikiPage: React.FC<Props> = ({ data }) => (
   <Body title={data.id}>
-    <div dangerouslySetInnerHTML={{ __html: data.content }} />
+    <article>
+      <Markdown content={data.content} />
+    </article>
   </Body>
 );
 
