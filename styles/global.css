@@ -28,3 +28,10 @@ pre {
     padding: 1em;
     overflow: auto;
 }
+
+hr {
+    border: none;
+}
+hr:after {
+    content: "---";
+}

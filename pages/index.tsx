@@ -25,7 +25,7 @@ const IndexPage: React.FC<Props> = ({ data }) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const summaries = getBlogSummaries().slice(0, 5);
+  const summaries = getBlogSummaries().slice(0, 3);
   const data = await Promise.all(
     summaries.map(async (summary) => await getBlogData(summary.id))
   );
