@@ -1,1 +1,0 @@
-{"pageProps":{"data":{"id":"TypeScript","content":"https://www.typescriptlang.org/\n\n[[JavaScript]] は型がなくてつらいので [[TypeScript]] を使ってみている。\n\naltJS な言語を使うと、コンパイルが必要になって面倒だなあと思うが、[[JavaScript]] を書いていても [webpack][] や [Babel][] を使ってコンパイルすることになるので面倒臭さは変わらなかった。\n\n[webpack]: https://webpack.js.org/\n[Babel]:https://babeljs.io/\n"}},"__N_SSG":true}
