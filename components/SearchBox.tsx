@@ -14,7 +14,7 @@ const SearchBox: React.FC = () => {
   });
   return (
     <div className="search-box">
-      <div ref={searchBoxRef} className="gcse-searchbox-only"></div>
+      <div ref={searchBoxRef} className="gcse-search"></div>
     </div>
   );
 };
