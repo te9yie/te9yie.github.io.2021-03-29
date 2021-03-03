@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>te9yie</title>
+        <link>https://te9yie.github.io</link>
+        <description>te9yie.github.io</description>
+        <lastBuildDate>Wed, 03 Mar 2021 16:08:34 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[2021-03-03]]></title>
+            <link>https://te9yie.github.io/b/2021-03-03</link>
+            <guid>https://te9yie.github.io/b/2021-03-03</guid>
+            <description><![CDATA[2021-03-03]]></description>
+            <content:encoded><![CDATA[<p>検索機能をつけたい。Google 検索ができればよいと思い設定してみる。</p>
+<p><a href="https://programmablesearchengine.google.com/">Programmable Search Engine</a></p>
+<p>下記のコードをコピーして貼り付けてくれ、といわれたままやると <code>&#x3C;div></code> 自体が見えなくなってうまく動かなかった。</p>
+<pre><code>&#x3C;script async src="https://cse.google.com/cse.js?cx=c961937a8b4f96e3d">&#x3C;/script>
+&#x3C;div class="gcse-search">&#x3C;/div>
+</code></pre>
+<p>まあ <a class="internal new" href="/w/React">React</a> だから <code>&#x3C;script></code> あたりの処理がうまく動かないのかなと思った。</p>
+<p><code>useEffect</code> で対応してみた。</p>
+<pre><code class="language-typescript">const SearchBox: React.FC = () => {
+  const searchBoxRef = React.createRef&#x3C;HTMLDivElement>();
+  useEffect(() => {
+    if (searchBoxRef &#x26;&#x26; searchBoxRef.current) {
+      const searchBox = searchBoxRef.current;
+      const parent = searchBox.parentNode;
+      const gcse = document.createElement("script");
+      gcse.async = true;
+      gcse.src = "https://cse.google.com/cse.js?cx=c961937a8b4f96e3d";
+      parent?.insertBefore(gcse, searchBox);
+    }
+  });
+  return (
+    &#x3C;div className="search-box">
+      &#x3C;div ref={searchBoxRef} className="gcse-search">&#x3C;/div>
+    &#x3C;/div>
+  );
+};
+</code></pre>
+<p>あと余白が大きくて邪魔だったので CSS も書いた。</p>
+<pre><code class="language-css">.gsc-control-cse {
+    padding: 0 !important;
+}
+</code></pre>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[2021-03-02]]></title>
+            <link>https://te9yie.github.io/b/2021-03-02</link>
+            <guid>https://te9yie.github.io/b/2021-03-02</guid>
+            <description><![CDATA[2021-03-02]]></description>
+            <content:encoded><![CDATA[<p>引き続き <a class="internal new" href="/w/JavaScript">JavaScript</a> の勉強。</p>
+<p><a href="https://jsprimer.net/basic/function-this/">関数とthis · JavaScript Primer #jsprimer</a> を読んだ。</p>
+<p>アロー関数では <code>this</code> は静的スコープで解決され、それ以外の関数では暗黙の引数で <code>this</code> が渡されるようだ。<code>var</code> の変数の巻き上げ挙動も怖い。知らないと色々罠がありそうだ。</p>
+<p><a class="internal new" href="/w/TypeScript">TypeScript</a> を学ぶにしても、基本の JavaScript の知識がないとダメなことが分かった。</p>
+<hr>
+<p>開発環境として <a class="internal new" href="/w/Docker">Docker</a> を使ってみることにした。 <a class="internal new" href="/w/VS Code">VS Code</a> から簡単に扱えるようなので試している。</p>
+<p><a href="https://code.visualstudio.com/docs/remote/containers">Developing inside a Container using Visual Studio Code Remote Development</a></p>
+<p>Windows で <code>git clone</code> して Remote Container で開いたらファイルが軒並み変更がかかった。どうも改行コードらへんの扱いが怪しいらしい。と思ったら、そのものの解説があった。</p>
+<p><a href="https://code.visualstudio.com/docs/remote/troubleshooting#_resolving-git-line-ending-issues-in-containers-resulting-in-many-modified-files">Visual Studio Code Remote Development Troubleshooting Tips and Tricks</a></p>
+<p><code>.gitattributes</code> を追加することにした。</p>
+<pre><code class="language-gitattributes">* text=auto eol=lf
+</code></pre>
+<hr>
+<p>いや、Windows 上で <code>git clone</code> せずに <a class="internal new" href="/w/WSL">WSL</a> 上でやって、そこから Remove Container を使うと大丈夫だ。</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[2021-03-01]]></title>
+            <link>https://te9yie.github.io/b/2021-03-01</link>
+            <guid>https://te9yie.github.io/b/2021-03-01</guid>
+            <description><![CDATA[2021-03-01]]></description>
+            <content:encoded><![CDATA[<p><a class="internal new" href="/w/JavaScript">JavaScript</a> 難しい。</p>
+<p><a href="https://ja.reactjs.org/docs/handling-events.html">Reactのイベント処理</a>:</p>
+<blockquote>
+<p>JSX のコールバックにおける this の意味に注意しなければなりません。JavaScript では、クラスのメソッドはデフォルトではバインドされません。this.handleClick へのバインドを忘れて onClick に渡した場合、実際に関数が呼ばれた時に this は undefined となってしまいます。</p>
+</blockquote>
+<p>意味が分からない。<a class="internal new" href="/w/JavaScript">JavaScript</a> では関数の定義方法が複数あって、それぞれ挙動が違うってことなんだと思う。</p>
+<p><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions">アロー関数 - JavaScript | MDN</a> によると、メソッドでない関数はアロー関数式を使って定義したほうがよさそうだ。</p>
+<p><a class="internal new" href="/w/TypeScript">TypeScript</a> の場合も、<a href="https://typescript-jp.gitbook.io/deep-dive/future-javascript/arrow-functions">アロー関数 - TypeScript Deep Dive 日本語版</a>を読む感じ、基本的にはアロー関数を使ったほうがよさそうな気がする。</p>
+<p><code>this</code> のバインドあたりの理解は大変そうだ。</p>
+<hr>
+<p>「ネスレ 香るまろやか ミルクココア」がおいしい。<code>>></code><a class="internal new" href="/w/好きなもの">好きなもの</a></p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[2021-02-28]]></title>
+            <link>https://te9yie.github.io/b/2021-02-28</link>
+            <guid>https://te9yie.github.io/b/2021-02-28</guid>
+            <description><![CDATA[2021-02-28]]></description>
+            <content:encoded><![CDATA[<p>ブログ形式でなく、ちょっとしたことを書いておくページが欲しいなと思い、Wiki っぽい感じのこともできるようにしてみた。</p>
+<p><a href="https://github.co.jp/features/actions">GitHub Actions</a> でデプロイしているんだけど、Next.js のビルドで警告が出ていた。</p>
+<pre><code>warn  - No build cache found. Please configure build caching for faster rebuilds. Read more: https://err.sh/next.js/no-cache
+</code></pre>
+<p>キャッシュしておいた方が良いみたいなので、しておく。</p>
+<pre><code>uses: actions/cache@v2
+with:
+  path: ${{ github.workspace }}/.next/cache
+  key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+</code></pre>
+<p>ついでに <code>yarn install</code> あたりも重そうなのでキャッシュする方法を調べた。</p>
+<p><a href="https://dev.to/mpocock1/how-to-cache-nodemodules-in-github-actions-with-yarn-24eh">How to cache node_modules in GitHub Actions with Yarn</a> を参考にした。</p>
+<pre><code>- uses: actions/cache@v2
+  with:
+    path: '**/node_modules'
+    key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+</code></pre>
+<p>ちなみに、やってる内容はまったく意味が分かっていない。コピペしただけなんで。<a href="https://github.co.jp/features/actions">GitHub Actions</a> についても調べないといけないんだろうけど、また今度…</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[2021-02-27]]></title>
+            <link>https://te9yie.github.io/b/2021-02-27</link>
+            <guid>https://te9yie.github.io/b/2021-02-27</guid>
+            <description><![CDATA[2021-02-27]]></description>
+            <content:encoded><![CDATA[<p><a href="https://nextjs.org/">Next.js</a> を調べながらサイトを構築している。</p>
+<p><a class="internal new" href="/w/JavaScript">JavaScript</a> も <a class="internal new" href="/w/TypeScript">TypeScript</a> も何も分からん状態だけど、<a href="https://nextjs.org/">Next.js</a> というか <a href="https://ja.reactjs.org/">React</a> が楽しい。コンポーネントを組み合わせて作っていく感覚がなんか気持ち良い。</p>
+<p><a href="https://nextjs.org/">Next.js</a> も <a href="https://ja.reactjs.org/">React</a> もドキュメントがしっかりしていてありがたい。</p>
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>
