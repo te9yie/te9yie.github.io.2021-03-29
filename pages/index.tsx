@@ -17,7 +17,7 @@ const IndexPage: React.FC<Props> = ({ data }) => (
         rel="alternate"
         type="application/rss+xml"
         href="/rss.xml"
-        title="RSS"
+        title="te9yie.github.io"
       />
     </Head>
     {data.map((data) => (
