@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
+import Head from "next/head";
 import Body from "../components/Body";
 import Markdown from "../components/Markdown";
 import { BlogData, getBlogData, getBlogSummaries } from "../libs/blog";
@@ -11,6 +12,14 @@ type Props = {
 
 const IndexPage: React.FC<Props> = ({ data }) => (
   <Body>
+    <Head>
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        href="/rss.xml"
+        title="RSS"
+      />
+    </Head>
     {data.map((data) => (
       <article key={data.id}>
         <h2>
