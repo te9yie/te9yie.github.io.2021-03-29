@@ -21,6 +21,10 @@ const Body: React.FC<Props> = ({ children, title, show_title = true }) => {
         <title>{title_in_head}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="google-site-verification"
+          content="iMWdKZ02K2Yzj9AtOP4cl-40F5DJp-YJLQDzv9vQgMk"
+        />
       </Head>
       <header>
         <Nav />
