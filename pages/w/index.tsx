@@ -1,25 +1,33 @@
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import Body from "../../components/Body";
-import Markdown from "../../components/Markdown";
-import { getWikiData, WikiData } from "../../libs/wiki";
-
-const INDEX_MD: string = "@index";
+import { getWikiSummaries, WikiSummary } from "../../libs/wiki";
 
 type Props = {
-  data: WikiData;
+  summaries: WikiSummary[];
 };
 
-const IndexPage: React.FC<Props> = ({ data }) => (
+const IndexPage: React.FC<Props> = ({ summaries }) => (
   <Body title="Wiki" show_title={false}>
-    <article>
-      <Markdown content={data.content} />
-    </article>
+    <ul>
+      {summaries.map((summary) => (
+        <li key={summary.id}>
+          <Link href={`/w/${summary.id}`}>
+            <a>{summary.id}</a>
+          </Link>
+        </li>
+      ))}
+    </ul>
   </Body>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getWikiData(INDEX_MD);
-  return { props: { data } };
+  const summaries = getWikiSummaries();
+  return {
+    props: {
+      summaries,
+    },
+  };
 };
 
 export default IndexPage;

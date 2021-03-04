@@ -32,14 +32,14 @@ pre {
     padding: 1em;
     overflow: auto;
 }
+code {
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+}
 
 hr {
     border: none;
 }
 hr:after {
     content: "---";
-}
-
-.gsc-control-cse {
-    padding: 0 !important;
 }

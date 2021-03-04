@@ -3,6 +3,10 @@ import path from "path";
 
 const WIKI_DIR = path.join(process.cwd(), "wiki");
 
+export type WikiSummary = {
+  id: string;
+};
+
 export type WikiData = {
   id: string;
   content: string;
@@ -17,6 +21,16 @@ export const getAllWikiIds = () => {
         id,
       },
     };
+  });
+};
+
+export const getWikiSummaries = () => {
+  const fileNames = fs.readdirSync(WIKI_DIR);
+  return fileNames.map((fileName) => {
+    const id = fileName.replace(/\.md$/, "");
+    return {
+      id,
+    } as WikiSummary;
   });
 };
 

@@ -1,4 +1,4 @@
-[[JavaScript]] を書くくらいなら、もう [[TypeScript]] でよさそう。
+[[JavaScript]]を書くくらいなら、もう[[TypeScript]]でよさそう。
 
 ### 参考になりそうなもの
 

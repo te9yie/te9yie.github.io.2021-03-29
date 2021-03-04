@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const summaries = getBlogSummaries();
   return {
     props: {
-      summaries: summaries.slice(0, 5),
+      summaries: summaries,
     },
   };
 };
