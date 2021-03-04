@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import SearchBox from "./SearchBox";
 import { SITE_NAME } from "../libs/const";
 
 const Nav: React.FC = () => (
@@ -23,8 +22,12 @@ const Nav: React.FC = () => (
           <a>Wiki</a>
         </Link>
       </li>
+      <li>
+        <Link href="/search">
+          <a>Search</a>
+        </Link>
+      </li>
     </ul>
-    <SearchBox />
   </nav>
 );
 
