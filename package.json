@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build:gen": "node gen-link.js",
+    "build": "yarn build:gen && next build",
     "start": "next start",
     "export": "next export",
     "export:rss": "node gen-rss.js",

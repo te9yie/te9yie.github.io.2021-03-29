@@ -43,3 +43,25 @@ hr {
 hr:after {
     content: "---";
 }
+
+
+.wiki-footer {
+    border-top: 1px solid #888;
+    padding-top: 1em;
+}
+.wiki-footer h4 {
+    display: inline;
+    margin-right: 1ex;
+}
+.wiki-footer ul {
+    display: inline;
+    padding: 0;
+}
+.wiki-footer li {
+    display: inline-block;
+}
+.wiki-footer li:not(:first-child)::before {
+    content: "/";
+    margin-left: 1ex;
+    margin-right: 1ex;
+}
