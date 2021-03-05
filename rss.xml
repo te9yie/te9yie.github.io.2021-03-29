@@ -4,29 +4,55 @@
         <title>te9yie</title>
         <link>https://te9yie.github.io</link>
         <description>te9yie.github.io</description>
-        <lastBuildDate>Thu, 04 Mar 2021 03:31:37 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 05 Mar 2021 08:33:10 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[2021-03-05]]></title>
+            <link>https://te9yie.github.io/b/2021-03-05</link>
+            <guid>https://te9yie.github.io/b/2021-03-05</guid>
+            <description><![CDATA[2021-03-05]]></description>
+            <content:encoded><![CDATA[<p>Wikiシステムの改良をしている。</p>
+<ul>
+<li>参照元リンクが自動的に表示されるようにしたい。</li>
+<li>関係ありそうなリンクも自動的に表示されるとうれしい。</li>
+</ul>
+<p>ざっくり言うと<a href="https://scrapbox.io">Scrapbox</a>みたいにしたい。</p>
+<p><a class="internal new" href="/w/SSG">SSG</a>でやりたいので、<a class="internal new" href="/w/Markdown">Markdown</a>で書かれたファイル群からリンク情報を生成しておくことにした。</p>
+<pre><code class="language-json">[
+    {
+        id: "ページ名",
+        refLinks: ["このページを参照しているページ名", ...],
+        links: ["このページから参照しているページ名", ...]
+    },
+    ...
+]
+</code></pre>
+<p>こんな感じの<a class="internal new" href="/w/JSON">JSON</a>を一旦作っておいて、<a class="internal new" href="/w/Next.js">Next.js</a>でのビルド時にこのファイルも参照しながらページを構築していく。</p>
+<p>Wikiリンクは<code>[[</code>と<code>]]</code>で囲うと作られるんだけど、存在しないリンクもつくることができる。存在しているかどうかを考えながら囲うか囲うまいか迷うのが嫌なので、ページが存在していなかった場合は自動的に作られるようにした。</p>
+<p>あいかわらず、スクリプトは<a class="internal new" href="/w/JavaScript">JavaScript</a>で書いた。</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2021-03-04]]></title>
             <link>https://te9yie.github.io/b/2021-03-04</link>
             <guid>https://te9yie.github.io/b/2021-03-04</guid>
             <description><![CDATA[2021-03-04]]></description>
-            <content:encoded><![CDATA[<p>RSSをつけてみたい。</p>
-<p><a class="internal new" href="/w/Next.js">Next.js</a>でRSS生成ができるのか調べていた。見つけた方法は2つ。</p>
+            <content:encoded><![CDATA[<p><a class="internal new" href="/w/RSS">RSS</a>をつけてみたい。</p>
+<p><a class="internal new" href="/w/Next.js">Next.js</a>で<a class="internal new" href="/w/RSS">RSS</a>生成ができるのか調べていた。見つけた方法は2つ。</p>
 <ol>
-<li><code>getServerSideProps()</code>を使ってSSRする。</li>
-<li>ビルド時に別処理でRSSファイルを生成する。</li>
+<li><code>getServerSideProps()</code>を使って<a class="internal new" href="/w/SSR">SSR</a>する。</li>
+<li>ビルド時に別処理で<a class="internal new" href="/w/RSS">RSS</a>ファイルを生成する。</li>
 </ol>
 <p>1.の方はサーバの用意が大変そうなのでやりたくない。2.になるんだけど、すでに<a class="internal new" href="/w/Next.js">Next.js</a>で同じような処理をやっているので、なんとかまとめたいと思っているんだけど、思いつかない。</p>
-<p>RSS生成は<code>yarn export:rss</code>ってやると<code>./out/rss.xml</code>が出力される感じにしたい。できれば<a class="internal new" href="/w/TypeScript">TypeScript</a>で書きたいんだけど、コンパイルとかもろもろ面倒なので素の<a class="internal new" href="/w/JavaScript">JavaScript</a>で書くことにしてみる。それなら<code>node gen-rss.js</code>で済む。</p>
+<p><a class="internal new" href="/w/RSS">RSS</a>生成は<code>yarn export:rss</code>ってやると<code>./out/rss.xml</code>が出力される感じにしたい。できれば<a class="internal new" href="/w/TypeScript">TypeScript</a>で書きたいんだけど、コンパイルとかもろもろ面倒なので素の<a class="internal new" href="/w/JavaScript">JavaScript</a>で書くことにしてみる。それなら<code>node gen-rss.js</code>で済む。</p>
 <pre><code class="language-package.json">"scripts": {
   ...
   "export:rss": "node gen-rss.js",
   ...
 },
 </code></pre>
-<p>あとは<a class="internal new" href="/w/Next.js">Next.js</a>でもやったような、Markdownファイル群をHTMLに変換してRSSファイルを生成する――同じような処理を何度も書くの嫌だなあ。</p>
+<p>あとは<a class="internal new" href="/w/Next.js">Next.js</a>でもやったような、<a class="internal new" href="/w/Markdown">Markdown</a>ファイル群を<a class="internal new" href="/w/HTML">HTML</a>に変換して<a class="internal new" href="/w/RSS">RSS</a>ファイルを生成する――同じような処理を何度も書くの嫌だなあ。</p>
 <p><a href="https://github.com/te9yie/te9yie.github.io/blob/main/gen-rss.js">https://github.com/te9yie/te9yie.github.io/blob/main/gen-rss.js</a></p>
 <p><a href="https://ja.reactjs.org/docs/react-dom-server.html">ReactDOMServer</a>使ってComponentsを使い回せないかと思ったんだが、コンパイル後<code>.js</code>が散らばったり<code>tsconfig.json</code>をどこに置けば良いのか分からないやらで、今の自分の知識では厳しそうだった。</p>
 <p>あとは<a class="internal new" href="/w/GitHub Actions">GitHub Actions</a>のワークフローに組み込んで完成。うまく動いているといいなあ。</p>
@@ -64,7 +90,7 @@
   );
 };
 </code></pre>
-<p>あと余白が大きくて邪魔だったのでCSSも書いた。</p>
+<p>あと余白が大きくて邪魔だったので<a class="internal new" href="/w/CSS">CSS</a>も書いた。</p>
 <pre><code class="language-css">.gsc-control-cse {
     padding: 0 !important;
 }
@@ -83,13 +109,13 @@
 <hr>
 <p>開発環境として<a class="internal new" href="/w/Docker">Docker</a>を使ってみることにした。<a class="internal new" href="/w/VS Code">VS Code</a>から簡単に扱えるようなので試している。</p>
 <p><a href="https://code.visualstudio.com/docs/remote/containers">Developing inside a Container using Visual Studio Code Remote Development</a></p>
-<p>Windowsで<code>git clone</code>してRemote Containerで開いたらファイルが軒並み変更がかかった。どうも改行コードらへんの扱いが怪しいらしい。と思ったら、そのものの解説があった。</p>
+<p>Windowsで<code>git clone</code>して<a class="internal new" href="/w/Remote Container">Remote Container</a>で開いたらファイルが軒並み変更がかかった。どうも改行コードらへんの扱いが怪しいらしい。と思ったら、そのものの解説があった。</p>
 <p><a href="https://code.visualstudio.com/docs/remote/troubleshooting#_resolving-git-line-ending-issues-in-containers-resulting-in-many-modified-files">Visual Studio Code Remote Development Troubleshooting Tips and Tricks</a></p>
 <p><code>.gitattributes</code>を追加することにした。</p>
 <pre><code class="language-gitattributes">* text=auto eol=lf
 </code></pre>
 <hr>
-<p>いや、Windows上で<code>git clone</code>せずに<a class="internal new" href="/w/WSL">WSL</a>上でやって、そこからRemove Containerを使うと大丈夫だ。</p>
+<p>いや、<a class="internal new" href="/w/Windows">Windows</a>上で<code>git clone</code>せずに<a class="internal new" href="/w/WSL">WSL</a>上でやって、そこから<a class="internal new" href="/w/Remote Container">Remote Container</a>を使うと大丈夫だ。</p>
 ]]></content:encoded>
         </item>
         <item>
@@ -108,31 +134,6 @@
 <p><code>this</code>のバインドあたりの理解は大変そうだ。</p>
 <hr>
 <p>「ネスレ 香るまろやか ミルクココア」がおいしい。<code>>></code><a class="internal new" href="/w/好きなもの">好きなもの</a></p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2021-02-28]]></title>
-            <link>https://te9yie.github.io/b/2021-02-28</link>
-            <guid>https://te9yie.github.io/b/2021-02-28</guid>
-            <description><![CDATA[2021-02-28]]></description>
-            <content:encoded><![CDATA[<p>ブログ形式でなく、ちょっとしたことを書いておくページが欲しいなと思い、Wikiっぽい感じのこともできるようにしてみた。</p>
-<p><a class="internal new" href="/w/GitHub Actions">GitHub Actions</a>でデプロイしているんだけど、<a class="internal new" href="/w/Next.js">Next.js</a>のビルドで警告が出ていた。</p>
-<pre><code>warn  - No build cache found. Please configure build caching for faster rebuilds. Read more: https://err.sh/next.js/no-cache
-</code></pre>
-<p>キャッシュしておいた方が良いみたいなので、しておく。</p>
-<pre><code>uses: actions/cache@v2
-with:
-  path: ${{ github.workspace }}/.next/cache
-  key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
-</code></pre>
-<p>ついでに<code>yarn install</code>あたりも重そうなのでキャッシュする方法を調べた。</p>
-<p><a href="https://dev.to/mpocock1/how-to-cache-nodemodules-in-github-actions-with-yarn-24eh">How to cache node_modules in GitHub Actions with Yarn</a>を参考にした。</p>
-<pre><code>- uses: actions/cache@v2
-  with:
-    path: '**/node_modules'
-    key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-</code></pre>
-<p>ちなみに、やってる内容はまったく意味が分かっていない。コピペしただけなんで。<a class="internal new" href="/w/GitHub Actions">GitHub Actions</a>についても調べないといけないんだろうけど、また今度…</p>
 ]]></content:encoded>
         </item>
     </channel>
