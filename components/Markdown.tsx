@@ -12,7 +12,7 @@ const renderers = {
   ),
   wikiLink: (data: any) => (
     <Link href={`/w/${data.value}`}>
-      <a>{data.value}</a>
+      <a className="wiki-link">{data.value}</a>
     </Link>
   ),
 };

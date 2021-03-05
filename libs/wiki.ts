@@ -8,6 +8,7 @@ const LINK_FILE = path.join(GEN_DIR, "links.json");
 type PageLink = {
   id: string;
   refLinks?: string[];
+  refBlogs?: string[];
   links?: string[];
 };
 type PageLinkJson = {
@@ -22,6 +23,7 @@ export type WikiData = {
   id: string;
   content: string;
   refLinks: string[];
+  refBlogs: string[];
   links: string[];
 };
 
@@ -58,11 +60,13 @@ export const getWikiData = async (id: string) => {
     ? fs.readFileSync(fullPath, "utf8")
     : "";
   const refLinks = page && page.refLinks ? page.refLinks : [];
+  const refBlogs = page && page.refBlogs ? page.refBlogs : [];
   const links = page && page.links ? page.links : [];
   return {
     id,
     content,
     refLinks,
+    refBlogs,
     links,
   } as WikiData;
 };

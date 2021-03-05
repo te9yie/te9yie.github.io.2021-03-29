@@ -15,6 +15,7 @@ const getWikiLinks = (text) => {
 let pages = new Map();
 
 fs.readdirSync(BLOG_DIR).forEach((fileName) => {
+  const id = fileName.replace(/\.md$/, "");
   const fullPath = path.join(BLOG_DIR, fileName);
   const content = fs.readFileSync(fullPath, "utf8");
   const links = getWikiLinks(content);
@@ -22,6 +23,12 @@ fs.readdirSync(BLOG_DIR).forEach((fileName) => {
     if (!pages.has(link)) {
       pages.set(link, new Map());
     }
+    const refPage = pages.get(link);
+    if (!refPage.has("refBlogs")) {
+      refPage.set("refBlogs", new Array());
+    }
+    const refLinks = refPage.get("refBlogs");
+    refLinks.push(id);
   });
 });
 fs.readdirSync(WIKI_DIR).forEach((fileName) => {
@@ -74,6 +81,7 @@ pages.forEach((value, key) => {
   jsonPages.push({
     id: key,
     refLinks: value.get("refLinks"),
+    refBlogs: value.get("refBlogs"),
     links,
   });
 });
