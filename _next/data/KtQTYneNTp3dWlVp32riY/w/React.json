@@ -1,0 +1,1 @@
+{"pageProps":{"data":{"id":"React","content":"https://ja.reactjs.org/\n\n> ユーザインターフェース構築のための[[JavaScript]]ライブラリ\n\nドキュメントがしっかりしていて良い。検索して見つけた記事は内容が古かったりするので、まず公式を見たほうがよいと思った。\n\n[[Next.js]]で[[SSG]]ができる。\n\n- [[ReactでGoogleカスタム検索を使う]]\n","refLinks":["Next.js","好きなもの"],"refBlogs":["2021-02-27","2021-03-03"],"links":["TypeScript","CSR","SSR"]}},"__N_SSG":true}
