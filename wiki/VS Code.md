@@ -4,6 +4,8 @@ https://code.visualstudio.com/
 
 単にテキストを編集するだけなら[[vim]]なんだけど、開発環境として使うならこっちの方が便利になっちゃった。
 
+[[VS Code Remote Development]]がめちゃくちゃ便利。
+
 ### とりあえず入れる拡張
 
 - [Vim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim)
