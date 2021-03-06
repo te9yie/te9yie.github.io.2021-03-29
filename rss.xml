@@ -4,9 +4,22 @@
         <title>te9yie</title>
         <link>https://te9yie.github.io</link>
         <description>te9yie.github.io</description>
-        <lastBuildDate>Fri, 05 Mar 2021 15:16:14 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 06 Mar 2021 13:37:45 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[2021-03-06]]></title>
+            <link>https://te9yie.github.io/b/2021-03-06</link>
+            <guid>https://te9yie.github.io/b/2021-03-06</guid>
+            <description><![CDATA[2021-03-06]]></description>
+            <content:encoded><![CDATA[<p>最近気になっていた言語が二つある。</p>
+<p>一つは<a class="internal new" href="/w/TypeScript">TypeScript</a>、もう一つが<a class="internal new" href="/w/Rust">Rust</a>だ。</p>
+<p><a class="internal new" href="/w/C++">C++</a>が一番長い期間触っていて好きな言語なんだけど、C++17あたりからの進化の方向性に違和感があってなんだかなあと思っている。逆に<a class="internal new" href="/w/C言語">C言語</a>に戻ってみるか？と思ったりもしたんだけど、そんな折に、どうも<a class="internal new" href="/w/Rust">Rust</a>が良さそうという噂を聞いた。</p>
+<p>まずは公式のドキュメントから読んでいく。</p>
+<p><a href="https://doc.rust-jp.rs/book-ja/title-page.html">The Rust Programming Language 日本語版 - The Rust Programming Language 日本語版</a></p>
+<p>言語やフレームワーク、ライブラリなんでもなんだけど、ドキュメントがしっかりしていると安心感がある。</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2021-03-05]]></title>
             <link>https://te9yie.github.io/b/2021-03-05</link>
@@ -116,24 +129,6 @@
 </code></pre>
 <hr>
 <p>いや、<a class="internal new" href="/w/Windows">Windows</a>上で<code>git clone</code>せずに<a class="internal new" href="/w/WSL">WSL</a>上でやって、そこから<a class="internal new" href="/w/Remote Container">Remote Container</a>を使うと大丈夫だ。</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2021-03-01]]></title>
-            <link>https://te9yie.github.io/b/2021-03-01</link>
-            <guid>https://te9yie.github.io/b/2021-03-01</guid>
-            <description><![CDATA[2021-03-01]]></description>
-            <content:encoded><![CDATA[<p><a class="internal new" href="/w/JavaScript">JavaScript</a>難しい。</p>
-<p><a href="https://ja.reactjs.org/docs/handling-events.html">Reactのイベント処理</a>:</p>
-<blockquote>
-<p>JSX のコールバックにおける this の意味に注意しなければなりません。JavaScript では、クラスのメソッドはデフォルトではバインドされません。this.handleClick へのバインドを忘れて onClick に渡した場合、実際に関数が呼ばれた時に this は undefined となってしまいます。</p>
-</blockquote>
-<p>意味が分からない。<a class="internal new" href="/w/JavaScript">JavaScript</a>では関数の定義方法が複数あって、それぞれ挙動が違うってことなんだと思う。</p>
-<p><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions">アロー関数 - JavaScript | MDN</a>によると、メソッドでない関数はアロー関数式を使って定義したほうがよさそうだ。</p>
-<p><a class="internal new" href="/w/TypeScript">TypeScript</a>の場合も、<a href="https://typescript-jp.gitbook.io/deep-dive/future-javascript/arrow-functions">アロー関数 - TypeScript Deep Dive 日本語版</a>を読む感じ、基本的にはアロー関数を使ったほうがよさそうな気がする。</p>
-<p><code>this</code>のバインドあたりの理解は大変そうだ。</p>
-<hr>
-<p>「ネスレ 香るまろやか ミルクココア」がおいしい。<code>>></code><a class="internal new" href="/w/好きなもの">好きなもの</a></p>
 ]]></content:encoded>
         </item>
     </channel>
