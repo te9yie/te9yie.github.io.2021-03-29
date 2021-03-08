@@ -4,9 +4,101 @@
         <title>te9yie</title>
         <link>https://te9yie.github.io</link>
         <description>te9yie.github.io</description>
-        <lastBuildDate>Sun, 07 Mar 2021 02:50:31 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 08 Mar 2021 01:57:01 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[2021-03-08]]></title>
+            <link>https://te9yie.github.io/b/2021-03-08</link>
+            <guid>https://te9yie.github.io/b/2021-03-08</guid>
+            <description><![CDATA[2021-03-08]]></description>
+            <content:encoded><![CDATA[<p><a class="internal new" href="/w/Rust">Rust</a>で<a class="internal new" href="/w/WebAssembly">WebAssembly</a>を生成しようにも、<a class="internal new" href="/w/webpack">webpack</a>の挙動が理解できてなくて意味が分からない。一旦<a class="internal new" href="/w/webpack">webpack</a>使わずに、<a class="internal new" href="/w/Rust">Rust</a>から<code>wasm</code>を生成し、それを<a class="internal new" href="/w/HTML">HTML</a>から読み込むだけのところから始めてみる。</p>
+<p><a class="internal new" href="/w/Rust">Rust</a>のクレートとして<code>wasm-bindgen</code>を使う。これは、<a class="internal new" href="/w/Rust">Rust</a>と<a class="internal new" href="/w/JavaScript">JavaScript</a>の橋渡しをしてくれる。あと<code>web-sys</code>。これを使うと<a class="internal new" href="/w/Rust">Rust</a>から<a class="internal new" href="/w/DOM">DOM</a>を操作できるようになる。</p>
+<p><code>lib.rs</code>:</p>
+<pre><code class="language-rust">use wasm_bindgen::prelude::*;
+use wasm_bindgen::JsCast;
+
+#[wasm_bindgen(start)]
+pub fn main() {
+    let window = web_sys::window().unwrap();
+    let document = window.document().unwrap();
+    let canvas = document.get_element_by_id("canvas").unwrap();
+    let canvas = canvas.dyn_into::&#x3C;web_sys::HtmlCanvasElement>().unwrap();
+    let context = canvas.get_context("2d").unwrap();
+    let context = context
+        .unwrap()
+        .dyn_into::&#x3C;web_sys::CanvasRenderingContext2d>()
+        .unwrap();
+
+    context.set_font("100% sans-serif");
+    context.fill_text("Hello WASM!", 10.0, 20.0).unwrap();
+
+    context.set_fill_style(&#x26;"red".into());
+    context.fill_rect(20.0, 30.0, 40.0, 40.0);
+
+    context.set_fill_style(&#x26;"green".into());
+    context.fill_rect(40.0, 50.0, 40.0, 40.0);
+}
+</code></pre>
+<p><code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[package]
+name = "hello-wasm-canvas"
+version = "0.1.0"
+authors = ["te9yie &#x3C;te9yie@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "*"
+
+[dependencies.web-sys]
+version = "*"
+features = [
+    "CanvasRenderingContext2d",
+    "Document",
+    "Element",
+    "HtmlCanvasElement",
+    "Window",
+]
+</code></pre>
+<p>ビルドしてみる。</p>
+<pre><code class="language-bash">$ wasm-pack build --target web
+</code></pre>
+<p><code>pkg</code>ディレクトリが生成される。</p>
+<pre><code class="language-bash">pkg
+├── hello_wasm_canvas.d.ts
+├── hello_wasm_canvas.js
+├── hello_wasm_canvas_bg.wasm
+├── hello_wasm_canvas_bg.wasm.d.ts
+└── package.json
+</code></pre>
+<p><a class="internal new" href="/w/TypeScript">TypeScript</a>用の型情報も生成されるんだな。</p>
+<p>これを読み込む<a class="internal new" href="/w/HTML">HTML</a>を書いてみる。</p>
+<p><code>index.html</code>:</p>
+<pre><code class="language-html">&#x3C;html>
+    &#x3C;body>
+        &#x3C;script type="module">
+            import init from "./pkg/hello_wasm_canvas.js";
+            const run = async () => {
+                await init();
+            }
+            run();
+        &#x3C;/script>
+        &#x3C;canvas id="canvas" />
+    &#x3C;/body>
+&#x3C;/html>
+</code></pre>
+<p>適当にサーバを立てて確認してみる。</p>
+<pre><code class="language-bash">$ npx serve
+</code></pre>
+<p>動いた！</p>
+<p><a class="internal new" href="/w/webpack">webpack</a>でこんな感じの<a class="internal new" href="/w/HTML">HTML</a>を生成したりしてたんだな。それだけなのになんでバージョン4と5であんなに挙動が変わるんだろう。<a class="internal new" href="/w/webpack">webpack</a>の<code>html-webpack-plugin</code>と<code>wasm-pack-plugin</code>あたりを調べてみようか。どうせならバージョン5の方で動かしてみたい。</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2021-03-07]]></title>
             <link>https://te9yie.github.io/b/2021-03-07</link>
@@ -229,45 +321,6 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 <p><a href="https://github.com/te9yie/te9yie.github.io/blob/main/gen-rss.js">https://github.com/te9yie/te9yie.github.io/blob/main/gen-rss.js</a></p>
 <p><a href="https://ja.reactjs.org/docs/react-dom-server.html">ReactDOMServer</a>使ってComponentsを使い回せないかと思ったんだが、コンパイル後<code>.js</code>が散らばったり<code>tsconfig.json</code>をどこに置けば良いのか分からないやらで、今の自分の知識では厳しそうだった。</p>
 <p>あとは<a class="internal new" href="/w/GitHub Actions">GitHub Actions</a>のワークフローに組み込んで完成。うまく動いているといいなあ。</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2021-03-03]]></title>
-            <link>https://te9yie.github.io/b/2021-03-03</link>
-            <guid>https://te9yie.github.io/b/2021-03-03</guid>
-            <description><![CDATA[2021-03-03]]></description>
-            <content:encoded><![CDATA[<p>検索機能をつけたい。Google検索ができればよいと思い設定してみる。</p>
-<p><a href="https://programmablesearchengine.google.com/">Programmable Search Engine</a></p>
-<p>下記のコードをコピーして貼り付けてくれ、といわれたままやると<code>&#x3C;div></code>自体が見えなくなってうまく動かなかった。</p>
-<pre><code class="language-html">&#x3C;script async src="https://cse.google.com/cse.js?cx=c961937a8b4f96e3d">&#x3C;/script>
-&#x3C;div class="gcse-search">&#x3C;/div>
-</code></pre>
-<p>まあ<a class="internal new" href="/w/React">React</a>だから<code>&#x3C;script></code>あたりの処理がうまく動かないのかなと思った。</p>
-<p><code>useEffect</code>で対応してみた。</p>
-<pre><code class="language-typescript">const SearchBox: React.FC = () => {
-  const searchBoxRef = React.createRef&#x3C;HTMLDivElement>();
-  useEffect(() => {
-    if (searchBoxRef &#x26;&#x26; searchBoxRef.current) {
-      const searchBox = searchBoxRef.current;
-      const parent = searchBox.parentNode;
-      const gcse = document.createElement("script");
-      gcse.async = true;
-      gcse.src = "https://cse.google.com/cse.js?cx=c961937a8b4f96e3d";
-      parent?.insertBefore(gcse, searchBox);
-    }
-  });
-  return (
-    &#x3C;div className="search-box">
-      &#x3C;div ref={searchBoxRef} className="gcse-search">&#x3C;/div>
-    &#x3C;/div>
-  );
-};
-</code></pre>
-<p>あと余白が大きくて邪魔だったので<a class="internal new" href="/w/CSS">CSS</a>も書いた。</p>
-<pre><code class="language-css">.gsc-control-cse {
-    padding: 0 !important;
-}
-</code></pre>
 ]]></content:encoded>
         </item>
     </channel>
