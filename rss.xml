@@ -4,9 +4,43 @@
         <title>te9yie</title>
         <link>https://te9yie.github.io</link>
         <description>te9yie.github.io</description>
-        <lastBuildDate>Mon, 08 Mar 2021 01:57:01 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 10 Mar 2021 10:13:05 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[2021-03-10]]></title>
+            <link>https://te9yie.github.io/b/2021-03-10</link>
+            <guid>https://te9yie.github.io/b/2021-03-10</guid>
+            <description><![CDATA[2021-03-10]]></description>
+            <content:encoded><![CDATA[<p><a class="internal new" href="/w/webpack">webpack</a>のことを調べて最新の<a class="internal new" href="/w/webpack">webpack</a>でも<a class="internal new" href="/w/WebAssembly">WebAssembly</a>が使えるようになった。<a href="https://rustwasm.github.io/docs/wasm-bindgen/">The <code>wasm-bindgen</code> Guide</a>を読みながら、アニメーションするものを作ってみた。</p>
+<p><a href="https://github.com/te9yie/wasm-bounce-ball">https://github.com/te9yie/wasm-bounce-ball</a></p>
+<iframe
+    title="wasm-bounce-ball"
+    width="430"
+    height="230"
+    src="https://te9yie.github.io/wasm-bounce-ball">
+</iframe>
+<hr>
+<p><code>Window.requestAnimationFrame()</code>の呼び出しが難解。</p>
+<p><a class="internal new" href="/w/JavaScript">JavaScript</a>でもクロージャを作って、その中で自分自身を渡すみたいな作りになる。</p>
+<pre><code class="language-javascript">const step = (now) => {
+    ...
+    window.requestAnimationFrame(step);
+};
+window.requestAnimationFrame(step);
+</code></pre>
+<p><a class="internal new" href="/w/Rust">Rust</a>だとこんな感じ。クロージャの中で自分自身を使いたいから先に変数は定義しておいて、登録用とクロージャ用に<code>Rc</code>で共有して、あとで代入するから<code>RefCell</code>にして――みたいな。</p>
+<pre><code class="language-rust">let f = Rc::new(RefCell::new(None));
+let ff = Rc::clone(&#x26;f);
+*ff.borrow_mut() = Some(Closure::wrap(Box::new(move |now| {
+    ...
+    request_animation_frame(f.borrow().as_ref().unwrap());
+}) as Box&#x3C;dyn FnMut(f64)>));
+request_animation_frame(ff.borrow().as_ref().unwrap());
+</code></pre>
+<p>マウスやキーボードなどの入力も取れるようになると、もう少し面白いものも作れそうだ。</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2021-03-08]]></title>
             <link>https://te9yie.github.io/b/2021-03-08</link>
@@ -294,33 +328,8 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 ]
 </code></pre>
 <p>こんな感じの<a class="internal new" href="/w/JSON">JSON</a>を一旦作っておいて、<a class="internal new" href="/w/Next.js">Next.js</a>でのビルド時にこのファイルも参照しながらページを構築していく。</p>
-<p>Wikiリンクは<code>[[</code>と<code>]]</code>で囲うと作られるんだけど、存在しないリンクもつくることができる。存在しているかどうかを考えながら囲うか囲うまいか迷うのが嫌なので、ページが存在していなかった場合は自動的に作られるようにした。</p>
+<p>Wikiリンクは存在しないリンクもつくることができる。存在しているかどうかを考えながら囲うか囲うまいか迷うのが嫌なので、ページが存在していなかった場合は自動的に作られるようにした。</p>
 <p>あいかわらず、スクリプトは<a class="internal new" href="/w/JavaScript">JavaScript</a>で書いた。</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2021-03-04]]></title>
-            <link>https://te9yie.github.io/b/2021-03-04</link>
-            <guid>https://te9yie.github.io/b/2021-03-04</guid>
-            <description><![CDATA[2021-03-04]]></description>
-            <content:encoded><![CDATA[<p><a class="internal new" href="/w/RSS">RSS</a>をつけてみたい。</p>
-<p><a class="internal new" href="/w/Next.js">Next.js</a>で<a class="internal new" href="/w/RSS">RSS</a>生成ができるのか調べていた。見つけた方法は2つ。</p>
-<ol>
-<li><code>getServerSideProps()</code>を使って<a class="internal new" href="/w/SSR">SSR</a>する。</li>
-<li>ビルド時に別処理で<a class="internal new" href="/w/RSS">RSS</a>ファイルを生成する。</li>
-</ol>
-<p>1.の方はサーバの用意が大変そうなのでやりたくない。2.になるんだけど、すでに<a class="internal new" href="/w/Next.js">Next.js</a>で同じような処理をやっているので、なんとかまとめたいと思っているんだけど、思いつかない。</p>
-<p><a class="internal new" href="/w/RSS">RSS</a>生成は<code>yarn export:rss</code>ってやると<code>./out/rss.xml</code>が出力される感じにしたい。できれば<a class="internal new" href="/w/TypeScript">TypeScript</a>で書きたいんだけど、コンパイルとかもろもろ面倒なので素の<a class="internal new" href="/w/JavaScript">JavaScript</a>で書くことにしてみる。それなら<code>node gen-rss.js</code>で済む。</p>
-<pre><code class="language-package.json">"scripts": {
-  ...
-  "export:rss": "node gen-rss.js",
-  ...
-},
-</code></pre>
-<p>あとは<a class="internal new" href="/w/Next.js">Next.js</a>でもやったような、<a class="internal new" href="/w/Markdown">Markdown</a>ファイル群を<a class="internal new" href="/w/HTML">HTML</a>に変換して<a class="internal new" href="/w/RSS">RSS</a>ファイルを生成する――同じような処理を何度も書くの嫌だなあ。</p>
-<p><a href="https://github.com/te9yie/te9yie.github.io/blob/main/gen-rss.js">https://github.com/te9yie/te9yie.github.io/blob/main/gen-rss.js</a></p>
-<p><a href="https://ja.reactjs.org/docs/react-dom-server.html">ReactDOMServer</a>使ってComponentsを使い回せないかと思ったんだが、コンパイル後<code>.js</code>が散らばったり<code>tsconfig.json</code>をどこに置けば良いのか分からないやらで、今の自分の知識では厳しそうだった。</p>
-<p>あとは<a class="internal new" href="/w/GitHub Actions">GitHub Actions</a>のワークフローに組み込んで完成。うまく動いているといいなあ。</p>
 ]]></content:encoded>
         </item>
     </channel>
