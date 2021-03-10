@@ -26,6 +26,7 @@ const Markdown: React.FC<Props> = ({ content }) => (
     plugins={[gfm, breaks, wikiLinkPlugin]}
     renderers={renderers}
     children={content}
+    allowDangerousHtml={true}
   />
 );
 

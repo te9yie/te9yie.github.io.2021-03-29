@@ -41,11 +41,12 @@ export const getAllWikiIds = () => {
 };
 
 export const getWikiSummaries = () => {
-  const fileNames = fs.readdirSync(WIKI_DIR);
-  return fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, "");
+  const linksJson: PageLinkJson = JSON.parse(
+    fs.readFileSync(LINK_FILE, "utf8")
+  );
+  return linksJson.pages.map((pageLink) => {
     return {
-      id,
+      id: pageLink.id,
     } as WikiSummary;
   });
 };
