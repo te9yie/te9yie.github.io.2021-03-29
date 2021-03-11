@@ -4,9 +4,25 @@
         <title>te9yie</title>
         <link>https://te9yie.github.io</link>
         <description>te9yie.github.io</description>
-        <lastBuildDate>Wed, 10 Mar 2021 10:13:05 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 11 Mar 2021 10:27:22 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[2021-03-11]]></title>
+            <link>https://te9yie.github.io/b/2021-03-11</link>
+            <guid>https://te9yie.github.io/b/2021-03-11</guid>
+            <description><![CDATA[2021-03-11]]></description>
+            <content:encoded><![CDATA[<p><a class="internal new" href="/w/WebAssembly">WebAssembly</a>でマウスイベントの処理もやってみた。</p>
+<p><a href="https://github.com/te9yie/wasm-mouse-event/">https://github.com/te9yie/wasm-mouse-event/</a></p>
+<iframe
+    title="wasm-mouse-event"
+    width="430"
+    height="230"
+    src="https://te9yie.github.io/wasm-mouse-event/">
+</iframe>
+<p>楽しくなってきた。</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2021-03-10]]></title>
             <link>https://te9yie.github.io/b/2021-03-10</link>
@@ -304,32 +320,6 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 <p>言語やフレームワーク、ライブラリなんでもなんだけど、ドキュメントがしっかりしていると安心感がある。</p>
 <hr>
 <p>とりあえず<a class="internal new" href="/w/VS Code Remote Development">VS Code Remote Development</a>で<a class="internal new" href="/w/Rust">Rust</a>の開発環境を整える。</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2021-03-05]]></title>
-            <link>https://te9yie.github.io/b/2021-03-05</link>
-            <guid>https://te9yie.github.io/b/2021-03-05</guid>
-            <description><![CDATA[2021-03-05]]></description>
-            <content:encoded><![CDATA[<p>Wikiシステムの改良をしている。</p>
-<ul>
-<li>参照元リンクが自動的に表示されるようにしたい。</li>
-<li>関係ありそうなリンクも自動的に表示されるとうれしい。</li>
-</ul>
-<p>ざっくり言うと<a href="https://scrapbox.io">Scrapbox</a>みたいにしたい。</p>
-<p><a class="internal new" href="/w/SSG">SSG</a>でやりたいので、<a class="internal new" href="/w/Markdown">Markdown</a>で書かれたファイル群からリンク情報を生成しておくことにした。</p>
-<pre><code class="language-json">[
-    {
-        id: "ページ名",
-        refLinks: ["このページを参照しているページ名", ...],
-        links: ["このページから参照しているページ名", ...]
-    },
-    ...
-]
-</code></pre>
-<p>こんな感じの<a class="internal new" href="/w/JSON">JSON</a>を一旦作っておいて、<a class="internal new" href="/w/Next.js">Next.js</a>でのビルド時にこのファイルも参照しながらページを構築していく。</p>
-<p>Wikiリンクは存在しないリンクもつくることができる。存在しているかどうかを考えながら囲うか囲うまいか迷うのが嫌なので、ページが存在していなかった場合は自動的に作られるようにした。</p>
-<p>あいかわらず、スクリプトは<a class="internal new" href="/w/JavaScript">JavaScript</a>で書いた。</p>
 ]]></content:encoded>
         </item>
     </channel>

@@ -1,0 +1,1 @@
+{"pageProps":{"data":{"id":"2021-03-11","content":"[[WebAssembly]]でマウスイベントの処理もやってみた。\n\nhttps://github.com/te9yie/wasm-mouse-event/\n\n<iframe\n    title=\"wasm-mouse-event\"\n    width=\"430\"\n    height=\"230\"\n    src=\"https://te9yie.github.io/wasm-mouse-event/\">\n</iframe>\n\n楽しくなってきた。\n"}},"__N_SSG":true}

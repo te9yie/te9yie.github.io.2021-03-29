@@ -1,0 +1,1 @@
+{"pageProps":{"data":{"id":"WebAssembly","content":"https://developer.mozilla.org/ja/docs/WebAssembly\n\n[[Rust]]から出力する時には[wasm-pack](https://github.com/rustwasm/wasm-pack)を使う。\n","refLinks":[],"refBlogs":["2021-03-07","2021-03-08","2021-03-10","2021-03-11"],"links":["VS Code Remote Development"]}},"__N_SSG":true}
