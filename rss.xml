@@ -4,9 +4,18 @@
         <title>te9yie</title>
         <link>https://te9yie.github.io</link>
         <description>te9yie.github.io</description>
-        <lastBuildDate>Thu, 11 Mar 2021 10:27:22 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 16 Mar 2021 13:13:26 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[2021-03-15]]></title>
+            <link>https://te9yie.github.io/b/2021-03-15</link>
+            <guid>https://te9yie.github.io/b/2021-03-15</guid>
+            <description><![CDATA[2021-03-15]]></description>
+            <content:encoded><![CDATA[<p>順番がおかしい気もするけど<a class="internal new" href="/w/JavaScript">JavaScript</a>でインタラクティブなものを作ろうと思った。</p>
+<p><a href="https://p5js.org/">p5.js</a>や<a href="https://threejs.org/">Three.js</a>を少し触ってみたり。サンプルをなぞるだけでなく何かを作らないと調べるモチベーションが湧かないな。</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2021-03-11]]></title>
             <link>https://te9yie.github.io/b/2021-03-11</link>
@@ -305,21 +314,6 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 <p>動いた。</p>
 <h3>まとめ</h3>
 <p>パッケージのバージョン合わせるの大事！！！</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2021-03-06]]></title>
-            <link>https://te9yie.github.io/b/2021-03-06</link>
-            <guid>https://te9yie.github.io/b/2021-03-06</guid>
-            <description><![CDATA[2021-03-06]]></description>
-            <content:encoded><![CDATA[<p>最近気になっていた言語が二つある。</p>
-<p>一つは<a class="internal new" href="/w/TypeScript">TypeScript</a>、もう一つが<a class="internal new" href="/w/Rust">Rust</a>だ。</p>
-<p><a class="internal new" href="/w/C++">C++</a>が一番長い期間触っていて好きな言語なんだけど、C++17あたりからの進化の方向性に違和感があってなんだかなあと思っている。逆に<a class="internal new" href="/w/C言語">C言語</a>に戻ってみるか？と思ったりもしたんだけど、そんな折に、どうも<a class="internal new" href="/w/Rust">Rust</a>が良さそうという噂を聞いた。</p>
-<p>まずは公式のドキュメントから読んでいく。</p>
-<p><a href="https://doc.rust-jp.rs/book-ja/title-page.html">The Rust Programming Language 日本語版 - The Rust Programming Language 日本語版</a></p>
-<p>言語やフレームワーク、ライブラリなんでもなんだけど、ドキュメントがしっかりしていると安心感がある。</p>
-<hr>
-<p>とりあえず<a class="internal new" href="/w/VS Code Remote Development">VS Code Remote Development</a>で<a class="internal new" href="/w/Rust">Rust</a>の開発環境を整える。</p>
 ]]></content:encoded>
         </item>
     </channel>
